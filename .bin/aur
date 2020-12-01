@@ -1,0 +1,56 @@
+#!/bin/sh
+
+#
+# aur - clone from the AUR
+#
+
+aur="https://aur.archlinux.org/"
+
+cd_or_die() {
+[ $# -ne 1 ] && {
+  cd ~/packages || exit 1
+}
+  cd ~/packages/"$1" || exit 1
+}
+
+get() {
+  (
+  cd_or_die
+  git clone "$aur$1"
+  )
+}
+
+build() {
+  (
+  cd_or_die $1
+  makepkg -si
+  )
+}
+
+yay() {
+  (
+  cd_or_die
+  git clone "$aur$1" && cd $1
+
+  makepkg -si
+  )
+}
+
+main() {
+
+case $1 in
+  get) cmd="get" ;;
+  build) cmd="build" ;;
+  yay) cmd="yay" ;;
+esac
+
+[ -z "$opt" ] && {
+  printf '%s\n' "Usage: aur [get/build/yay] [package-name]"
+  exit 1
+}
+
+"$cmd" "$2"
+
+}
+
+main "$@"
