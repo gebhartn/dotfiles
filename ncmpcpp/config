@@ -28,7 +28,7 @@ progressbar_elapsed_color = "green"
 
 # song list
 song_status_format= "$7%t"
-song_list_format = "$(008)%t$R  $(247)%a"
+song_list_format = "$(008)%a ~ $(247)%t"
 song_columns_list_format = "(53)[blue]{tr} (45)[blue]{a}"
 
 # current_item_prefix = "$b$2| "

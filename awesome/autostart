@@ -1,4 +1,4 @@
 #!/bin/bash
 
-hsetroot -solid '#cdcdcd'
+hsetroot -solid '#bdc3c2'
 xset r rate 200 40
